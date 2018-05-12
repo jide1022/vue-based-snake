@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map-container {
+            height: 100%;
+            width: 100%;
+            background-color: #dedede;
+            text-align: center;
+        }
+
+        table {
+            display: block;
+            border-collapse: collapse;
+            display: inline-block;
+            margin-top: 300px;
+        }
+
+        td {
+            height: 10px;
+            width: 10px;
+            border: 1px solid #dede;
+            background-color: #ffffff;
+            padding: 0;
+        }
+
+        td.active {
+            background-color: coral;
+        }
+
+        td.target {
+            background-color: brown;
+        }
+
+        .score {
+            position: absolute;
+            font-weight: bold;
+            font-size: 30px;
+            color: cornflowerblue;
+            left: 100px;
+            top: 100px;
+        }
+
+        .msg {
+            position: absolute;
+            font-weight: bold;
+            font-size: 30px;
+            color: cornflowerblue;
+            left: 100px;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="map-container">
+        <table>
+            <tr v-for="(row,i) in mapData">
+                <td v-for="(cell,j) in row" :class="{active:cell===1,target:cell===2}" :id="i+'-'+j"></td>
+            </tr>
+        </table>
+        <p class="score">得分：{{score}}</p>
+        <p class="msg" v-if="end">{{endMsg}}</p>
+        <p class="msg" v-if="pause">暂停中...</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/index.js"></script>
+
+</html>
